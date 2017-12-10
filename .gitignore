@@ -1,0 +1,13 @@
+# Packages #
+
+packages/
+
+# Other Android Project#
+
+CoPro.iOS/
+CoPro.UWP/
+
+# Generated files#
+
+bin/
+obj/
