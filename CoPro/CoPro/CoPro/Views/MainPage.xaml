@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CoPro"
+             x:Class="CoPro.Views.MainPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView  ItemsSource="{Binding Series}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal">
+                                        <!--<Label Text="ce"/>-->
+                                        <Image Source="Arnaud.jpg"/>
+                                    </StackLayout>
+                                    <Label Grid.Column="1" Text="{Binding Name}" Style="{StaticResource UsualLabelTemplate}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource StackLayoutStyle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16"/>
+                            <RowDefinition Height="16"/>
+                            <RowDefinition Height="16"/>
+                            <RowDefinition Height="16"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="24"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <Label Style="{StaticResource FirstLine}" Text="Détail de la collection"/>
+                    <Label Grid.Row="1" Style="{StaticResource UsualLabelTemplate}" Text="Nombre de Volume" />
+                    <Label Grid.Row="2" Style="{StaticResource UsualLabelTemplate}" Text="Nombre de jeu videal" />
+                    <Label Grid.Row="3" Style="{StaticResource UsualLabelTemplate}" Text="Dernière parution"/>
+                    <StackLayout Grid.Row="4"  >
+                        <StackLayout Spacing="0" >
+                            <ListView x:Name="MissingVolumeListView"  
+                              ItemsSource="{Binding Volumes}"
+                              SelectedItem ="{Binding Id}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid x:Name="Item">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label  Text="{Binding Name}" Style="{StaticResource UsualLabelTemplate}"/>
+                                                <Button Grid.Column="1" x:Name="DeleteButton" Text ="-" BindingContext="{Binding Source={x:Reference MissingVolumeListView}, Path=BindingContext}"   Command="{Binding DeleteVolumeCommand}" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <Button   Text ="+" x:Name="AddVolumeButton" Clicked="AddVolume"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

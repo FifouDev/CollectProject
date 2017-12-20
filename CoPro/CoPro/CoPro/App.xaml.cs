@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CoPro.ViewModels;
+using CoPro.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +11,40 @@ namespace CoPro
 {
     public partial class App : Application
     {
+
+        private static object padlock = new object();
+
+        private static ViewModelLocator _locator;
+
+        public static ViewModelLocator Locator
+        {
+            get
+            {
+                if (_locator == null)
+                {
+                    lock (padlock)
+                    {
+                        if (_locator == null)
+                        {
+                            Initialize();
+                            _locator = new ViewModelLocator();
+                        }
+                    }
+                }
+
+                return _locator;
+            }
+        }
+
+        public static void Initialize()
+        {
+        }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new CoPro.MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

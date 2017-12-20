@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="CoPro.Themes.Templates">
+
+    <Style x:Key="FirstLine" TargetType="Label">
+        <Setter Property="Background" Value="{StaticResource GreenColorBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlueColorBrush}"/>
+        <Setter Property="HorizontalTextAlignment " Value="Center"/>
+    </Style>
+
+    <Style x:Key="UsualTextBlockTemplate" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="DockPanelStyle" TargetType="StackLayout">
+        <Setter Property="Margin" Value="8,0"/>
+    </Style>
+
+    <Style x:Key="MenuButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource GreenColorBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlueColorBrush}"/>
+    </Style>
+</ResourceDictionary>
