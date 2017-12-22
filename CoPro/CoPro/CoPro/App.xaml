@@ -2,6 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:theme="clr-namespace:CoPro.Themes"
+             xmlns:con="using:CoPro.Converters"        
              x:Class="CoPro.App">
 	<Application.Resources>
         <ResourceDictionary>
@@ -28,7 +29,24 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource GreenColor}"/>
                 <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
             </Style>
+
+            <ControlTemplate x:Key="EditGridStyle">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Name"/>
+                    <Entry Grid.Column="1"/>
+                </Grid>
+            </ControlTemplate>
+
+            <!--<Style x:Key="EditGridStyle" TargetType="Grid">
+                <Setter Property="ColumnDefinitions" Value="{StaticResource GreenColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+            </Style>-->         
             
+            <con:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
             <!--<ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary MergedWith="theme:Colors"/>
                 <ResourceDictionary MergedWith="theme:Templates"/>

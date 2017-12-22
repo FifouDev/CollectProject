@@ -43,8 +43,8 @@ namespace CoPro
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(Locator.MainPage);
+            //MainPage = new MainPage();                 
         }
 
         protected override void OnStart()

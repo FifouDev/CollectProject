@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoPro.Views.EditVolumePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="Type" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+            <Grid  Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Name"/>
+                <Entry x:Name="VolumeName" Grid.Column="1" Text="{Binding VolumeName}"/>
+            </Grid>
+            <Grid  Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Description"/>
+                <Editor x:Name="VolumeDescription" Grid.Column="1" Text="{Binding VolumeDecription}"/>
+            </Grid>
+            <Button Grid.Row="3" Text="Save" HorizontalOptions="CenterAndExpand" Command="{Binding EditVolumeCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

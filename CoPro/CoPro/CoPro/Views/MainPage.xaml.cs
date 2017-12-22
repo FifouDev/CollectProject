@@ -16,16 +16,14 @@ namespace CoPro.Views
 
         public MainViewModel Viewmodel { get; } = App.Locator.Main;
         public MainPage()
-        {
+        {       
             InitializeComponent();
             BindingContext = Viewmodel;
-            Viewmodel.GetVolumes();
-            Viewmodel.GetSeries();
+            Viewmodel.Navigation = Navigation;
         }
-
-        private void AddVolume(object sender, EventArgs e)
-        {
-            Viewmodel.AddVolume();
-        }       
+        //private async void ToEditVolumePage(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(App.Locator.EditPage, false);
+        //}
     }
 }
