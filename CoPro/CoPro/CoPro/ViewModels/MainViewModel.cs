@@ -57,9 +57,9 @@ namespace CoPro.ViewModels
         #region Methods
         public void GetSeries()
         {
-            _series.Add(new Volume { Id = 1, Name = "Dragon Ball", Description = "De la Balle, mon gars", ImageUrl = "Dragon-Ball-FighterZ.jpg" });
-            _series.Add(new Volume { Id = 2, Name = "Naruto", Description = "Putain de musique motivante", ImageUrl = "Naruto.jpg" });
-            _series.Add(new Volume { Id = 3, Name = "Bleach", Description = "Après Aizen, le néant", ImageUrl = "Bleach2.jpg" });
+            _series.Add(new Volume { Id = 1, Name = "Dragon Ball", Description = "De la Balle, mon gars", ImageUrl = @"Dragon-Ball-FighterZ.jpg" });         
+            _series.Add(new Volume { Id = 2, Name = "Naruto", Description = "Putain de musique motivante", ImageUrl = @"Naruto.jpg" });
+            _series.Add(new Volume { Id = 3, Name = "Bleach", Description = "Après Aizen, le néant", ImageUrl = @"Bleach2.jpg" });
 
         }
 
@@ -72,7 +72,7 @@ namespace CoPro.ViewModels
 
         public void GetSuggestions()
         {
-            _suggestions.Add(new Suggestion { Id = 1, UserName = "Mr Savy", Text = "Franchement pas ouf", ImageUrl = "Arnaud.jpg" });
+            _suggestions.Add(new Suggestion { Id = 1, UserName = "Mr Savy", Text = "Franchement, pas ouf", ImageUrl = "Arnaud.jpg" });
             _suggestions.Add(new Suggestion { Id = 2, UserName = "Prophete Foures", Text = "M'en fous, je fais ça pour toi", ImageUrl = "prophete.jpg" });
             _suggestions.Add(new Suggestion { Id = 3, UserName = "Lixfe", Text = "A babord toute", ImageUrl = "ok.jpg" });
         }

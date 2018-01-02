@@ -20,10 +20,6 @@ namespace CoPro.Views
             InitializeComponent();
             BindingContext = Viewmodel;
             Viewmodel.Navigation = Navigation;
-        }
-        //private async void ToEditVolumePage(object sender, EventArgs e)
-        //{
-        //    await Navigation.PushAsync(App.Locator.EditPage, false);
-        //}
+        }     
     }
 }

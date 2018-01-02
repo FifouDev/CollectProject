@@ -44,8 +44,8 @@
             <!--<Style x:Key="EditGridStyle" TargetType="Grid">
                 <Setter Property="ColumnDefinitions" Value="{StaticResource GreenColor}"/>
                 <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
-            </Style>-->         
-            
+            </Style>-->
+
             <con:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
             <!--<ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary MergedWith="theme:Colors"/>

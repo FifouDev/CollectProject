@@ -8,19 +8,19 @@ using Xamarin.Forms.Xaml;
 
 namespace CoPro.Assets
 {
-    [ContentProperty("Source")]
+    [ContentProperty("SourceImage")]
     public class ImageResourceExtension : IMarkupExtension
     {
-        public string Source { get; set; }
+        public string SourceImage { get; set; }
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (Source == null)
+            if (SourceImage == null)
             {
                 return null;
             }
        
-            var imageSource = ImageSource.FromResource($"CoPro.Assets.{Source}");
+            var imageSource = ImageSource.FromResource($"CoPro.Assets.{SourceImage}");
 
             return imageSource;
         }

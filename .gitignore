@@ -11,3 +11,7 @@ CoPro.UWP/
 
 bin/
 obj/
+
+# Ressources
+*.jpg
+*.jpeg

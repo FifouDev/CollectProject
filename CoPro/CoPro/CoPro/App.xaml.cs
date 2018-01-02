@@ -43,6 +43,7 @@ namespace CoPro
         public App()
         {
             InitializeComponent();
+            //SQLiteDataBase.SetConnectionProviderAsync(new SQLiteConnectionProvider()).GetAwaiter().GetResult();
             MainPage = new NavigationPage(Locator.MainPage);
             //MainPage = new MainPage();                 
         }

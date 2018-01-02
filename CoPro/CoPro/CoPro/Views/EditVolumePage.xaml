@@ -8,7 +8,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Label Text="Type" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
             <Grid  Grid.Row="1" >

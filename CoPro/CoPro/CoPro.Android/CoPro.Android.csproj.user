@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>HUAWEI VNS-L31</SelectedDevice>
     <DefaultDevice>AVD_GalaxyNexus_ToolsForApacheCordova</DefaultDevice>
+    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
