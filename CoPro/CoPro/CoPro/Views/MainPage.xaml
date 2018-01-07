@@ -61,7 +61,8 @@
                         <ListView x:Name="MissingVolumeListView"
                                   HasUnevenRows="True"
                                   ItemsSource="{Binding Volumes}"
-                                  SelectedItem ="{Binding Id}">
+                                  SelectedItem ="{Binding Id}"
+                                  ItemSelected="MissingVolumeListView_ItemSelected">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>

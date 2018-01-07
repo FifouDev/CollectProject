@@ -17,8 +17,9 @@ namespace CoPro.ViewModels
     {
         public MainViewModel()
         {
+
             _volumes = new ObservableCollection<Volume>();
-            GetVolumes();
+            //GetVolumes();          
             _series = new ObservableCollection<Volume>();
             GetSeries();
             _suggestions = new ObservableCollection<Suggestion>();
@@ -26,7 +27,8 @@ namespace CoPro.ViewModels
         }
 
         #region Field
-        private ObservableCollection<Volume> _volumes;      
+        private ObservableCollection<Volume> _volumes;
+        private IEnumerable<Volume> _allVolumes;
         private ObservableCollection<Volume> _series;
         private ObservableCollection<Suggestion> _suggestions;
         private INavigation _navigation;
@@ -57,7 +59,7 @@ namespace CoPro.ViewModels
         #region Methods
         public void GetSeries()
         {
-            _series.Add(new Volume { Id = 1, Name = "Dragon Ball", Description = "De la Balle, mon gars", ImageUrl = @"Dragon-Ball-FighterZ.jpg" });         
+            _series.Add(new Volume { Id = 1, Name = "Dragon Ball", Description = "De la Balle, mon gars", ImageUrl = @"Dragon-Ball-FighterZ.jpg" });
             _series.Add(new Volume { Id = 2, Name = "Naruto", Description = "Putain de musique motivante", ImageUrl = @"Naruto.jpg" });
             _series.Add(new Volume { Id = 3, Name = "Bleach", Description = "Après Aizen, le néant", ImageUrl = @"Bleach2.jpg" });
 
@@ -70,6 +72,21 @@ namespace CoPro.ViewModels
             _volumes.Add(new Volume { Id = 3, Name = "Tortue Génial", Description = "Après Aizen, le néant", ImageUrl = "Bleach2.jpg" });
         }
 
+        public async Task LoadVolumeAsync()
+        {
+            _allVolumes = await App.VolumeRepository.GetAllAsync();
+            IEnumerableVolumeToObservable();
+        }
+
+        public void IEnumerableVolumeToObservable()
+        {
+            _volumes.Clear();
+            foreach (var volume in _allVolumes)
+            {
+                _volumes.Add(volume);
+            }
+        }
+
         public void GetSuggestions()
         {
             _suggestions.Add(new Suggestion { Id = 1, UserName = "Mr Savy", Text = "Franchement, pas ouf", ImageUrl = "Arnaud.jpg" });
@@ -77,13 +94,17 @@ namespace CoPro.ViewModels
             _suggestions.Add(new Suggestion { Id = 3, UserName = "Lixfe", Text = "A babord toute", ImageUrl = "ok.jpg" });
         }
 
-        public void AddVolume(Volume volume)
+        public async void AddVolume(Volume volume)
         {
-            var isVolumeExist = _volumes.Any(vol => vol.Name == volume.Name);
-            if (!isVolumeExist)
+            if (volume != null)
             {
-                _volumes.Add(volume);
+                await App.VolumeRepository.CreateAsync(volume);
             }
+            //var isVolumeExist = _volumes.Any(vol => vol.Name == volume.Name);
+            //if (!isVolumeExist)
+            //{
+            //    _volumes.Add(volume);
+            //}
         }
         #endregion
         #region Command
@@ -94,8 +115,9 @@ namespace CoPro.ViewModels
             get { return _deleteVolumeCommand ?? (_deleteVolumeCommand = new RelayCommand<Volume>(ExecuteDeleteCommand)); }
         }
 
-        private void ExecuteDeleteCommand(Volume volume)
-        {
+        private async void ExecuteDeleteCommand(Volume volume)
+        {       
+            await App.VolumeRepository.DeleteAsync(volume);
             _volumes.Remove(volume);
             //((IEnumerable<Volume>)_volumes).ToList().IndexOf(item); 
         }
@@ -120,6 +142,8 @@ namespace CoPro.ViewModels
 
         private async void ExecuteEditCommand()
         {
+            App.Locator.Edit.VolumeName = string.Empty;        
+            App.Locator.Edit.VolumeDescription = string.Empty;
             await Navigation.PushAsync(App.Locator.EditPage, false);
         }
         #endregion

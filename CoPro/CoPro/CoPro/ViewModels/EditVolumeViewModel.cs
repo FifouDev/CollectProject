@@ -13,6 +13,7 @@ namespace CoPro.ViewModels
 {
     public class EditVolumeViewModel : ViewModelBase
     {
+        private Volume _volume;
         private string _volumeName;
         private string _volumeDescription;
         private INavigation _navigation;
@@ -20,15 +21,21 @@ namespace CoPro.ViewModels
         public EditVolumeViewModel()
         {
             _volumeName = null;
-            _volumeDescription = null;         
+            _volumeDescription = null;
+            _volume = new Volume();
         }
-
         public string VolumeName
         {
             get { return _volumeName; }
             set { Set(ref _volumeName, value); }
         }
-        public string VolumeDecription
+
+        public Volume Volume
+        {
+            get { return _volume; }
+            set { Set(ref _volume, value); }
+        }
+        public string VolumeDescription
         {
             get { return _volumeDescription; }
             set { Set(ref _volumeDescription, value); }
@@ -48,10 +55,14 @@ namespace CoPro.ViewModels
 
         private async void ExecuteEditCommand()
         {
-            if (_volumeName != null && _volumeDescription != null)
+            if (!string.IsNullOrEmpty(_volumeName) && !string.IsNullOrEmpty(_volumeDescription))
             {
                 var editVolume = new Volume { Name = _volumeName, Description = _volumeDescription };
-                App.Locator.Main.AddVolume(editVolume);             
+                App.Locator.Main.AddVolume(editVolume);
+                VolumeName = string.Empty;
+                VolumeDescription = string.Empty;
+                //Volume.Name = string.Empty;
+                //Volume.Description = string.Empty;
                 await Navigation.PopAsync();
             }
         }

@@ -11,6 +11,7 @@ CoPro.UWP/
 
 bin/
 obj/
+*.csproj
 
 # Ressources
 *.jpg

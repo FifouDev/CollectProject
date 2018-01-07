@@ -1,4 +1,7 @@
-﻿using CoPro.ViewModels;
+﻿using CoPro.Models;
+using CoPro.Repositories;
+using CoPro.Repositories.Implementations;
+using CoPro.ViewModels;
 using CoPro.Views;
 using System;
 using System.Collections.Generic;
@@ -15,6 +18,7 @@ namespace CoPro
         private static object padlock = new object();
 
         private static ViewModelLocator _locator;
+        private static VolumeRepository _volumeRepository;
 
         public static ViewModelLocator Locator
         {
@@ -35,6 +39,19 @@ namespace CoPro
                 return _locator;
             }
         }
+
+        public static VolumeRepository VolumeRepository
+        {
+            get
+            {
+                if (_volumeRepository == null)
+                {
+                    _volumeRepository = new VolumeRepository(DependencyService.Get<ILocalFileHelper>().GetLocalFilePath("Volume.db3"));
+                }
+                return _volumeRepository;
+            }
+        }
+
 
         public static void Initialize()
         {

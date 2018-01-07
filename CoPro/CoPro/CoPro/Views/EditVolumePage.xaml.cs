@@ -19,5 +19,9 @@ namespace CoPro.Views
             BindingContext = Viewmodel;
             Viewmodel.Navigation = Navigation;
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();                    
+        }
     }
 }
